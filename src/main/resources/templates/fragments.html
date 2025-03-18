@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav th:fragment="navbar" class="h-50">
+      <div class="flex">
+        <div class="border h-30 w-50 flex items-center justify-center">
+          <a href="/" class="text-2xl">Best of</a>
+        </div>
+        <div
+          class="grow border flex justify-start gap-5 ps-15 items-center text-xl"
+        >
+          <a th:replace="~{ fragments :: button('/movies', 'Movies')}"></a>
+          <a th:replace="~{ fragments :: button('/songs', 'Songs')}"></a>
+        </div>
+      </div>
+    </nav>
+    <a
+      class="px-5 py-2 bg-blue-500 rounded-xl text-white"
+      th:fragment="button(link, text)"
+      th:text="${text}"
+      th:href="${link}"
+    ></a>
+  </body>
+</html>

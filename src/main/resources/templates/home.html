@@ -4,8 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>HOME</title>
+    <!-- tailwind -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body>
-    <h1>Best of the year by [[${name}]]</h1>
+    <nav th:replace="~{ fragments :: navbar }"></nav>
+    <h1 class="font-bold text-7xl text-center pb-10 text-slate-700">
+      Best of the year by [[${name}]]
+    </h1>
+    <div class="flex flex-col text-center items-center justify-center gap-5">
+      <img
+        class="w-180"
+        src="https://www.anonimacinefili.it/wp-content/uploads/2023/01/migliori-film-del-2022-classifica-top-10-dei-film-imperdibili-da-vedere-assolutamente-e-da-recuperare-nel-2023-dove-vederli-1200x600.jpg"
+        alt=""
+      />
+      <p class="text-2xl w-60/100 text-balance">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate
+        recusandae id aspernatur laudantium at eum ipsa ipsam voluptatem
+        mollitia. Fugit esse veritatis exercitationem saepe ab necessitatibus
+        similique itaque blanditiis laudantium?
+      </p>
+    </div>
   </body>
 </html>
