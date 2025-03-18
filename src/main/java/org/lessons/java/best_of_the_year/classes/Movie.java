@@ -3,12 +3,12 @@ package org.lessons.java.best_of_the_year.classes;
 import java.io.Serializable;
 
 public class Movie implements Serializable {
-    private int id;
+    private String id;
     private String title;
 
     public Movie(){}
 
-    public Movie(int id, String title){
+    public Movie(String id, String title){
         this.title = title;
         this.id = id;
     }
@@ -17,7 +17,7 @@ public class Movie implements Serializable {
     public String getTitle(){
         return title;
     }
-    public int getId(){
+    public String getId(){
         return id;
     }
 
@@ -25,7 +25,7 @@ public class Movie implements Serializable {
     public void setTitle(String title){
         this.title = title;
     }
-    public void setId(int id){
+    public void setId(String id){
         this.id = id;
     }
 

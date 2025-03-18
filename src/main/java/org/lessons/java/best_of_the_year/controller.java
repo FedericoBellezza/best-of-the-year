@@ -39,7 +39,16 @@ public class controller {
     @GetMapping("/movies/{id}")
     public String movieById(Model model, @PathVariable("id") String urlContent){
         model.addAttribute("id", urlContent);
-        return "pageById";
+        model.addAttribute("listaDeiMiglioriFilm", getBestMovies());
+
+        return "pageMovieById";
+    }
+    @GetMapping("/songs/{id}")
+    public String songById(Model model, @PathVariable("id") String urlContent){
+        model.addAttribute("id", urlContent);
+        model.addAttribute("listaDelleMiglioriCanzoni", getBestSongs());
+
+        return "pageSongById";
     }
 
 
@@ -48,9 +57,9 @@ public class controller {
     
     // getters
     private ArrayList<Movie> getBestMovies(){
-        Movie movieUno = new Movie(1, "Harry Potter");
-        Movie movieDue = new Movie(2, "Il Signore degli Anelli");
-        Movie movieTre = new Movie(3, "Annabelle");
+        Movie movieUno = new Movie("1", "Harry Potter");
+        Movie movieDue = new Movie("2", "Il Signore degli Anelli");
+        Movie movieTre = new Movie("3", "Annabelle");
 
         ArrayList<Movie> listaDeiMiglioriFilm = new ArrayList<>();
         listaDeiMiglioriFilm.add(movieUno);
@@ -60,9 +69,9 @@ public class controller {
         return listaDeiMiglioriFilm;
     }
     private ArrayList<Song> getBestSongs(){
-        Song songUno = new Song(1, "Balorda Nostalgia");
-        Song songDue = new Song(2, "Volevo essere un duro");
-        Song songTre = new Song(3, "La Cura");
+        Song songUno = new Song("1", "Balorda Nostalgia");
+        Song songDue = new Song("2", "Volevo essere un duro");
+        Song songTre = new Song("3", "La Cura");
 
         ArrayList<Song> listaDelleMiglioriCanzoni = new ArrayList<>();
         listaDelleMiglioriCanzoni.add(songUno);
