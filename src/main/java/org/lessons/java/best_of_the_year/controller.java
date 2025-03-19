@@ -36,30 +36,47 @@ public class controller {
         return "songs";
     }
 
-    @GetMapping("/movies/{id}")
-    public String movieById(Model model, @PathVariable("id") String urlContent){
-        model.addAttribute("id", urlContent);
-        model.addAttribute("listaDeiMiglioriFilm", getBestMovies());
-
-        return "pageMovieById";
-    }
     @GetMapping("/songs/{id}")
-    public String songById(Model model, @PathVariable("id") String urlContent){
-        model.addAttribute("id", urlContent);
-        model.addAttribute("listaDelleMiglioriCanzoni", getBestSongs());
+    public String songById(Model model, @PathVariable("id") Integer songId){
+        
+        // find the song by ID
+        Song songFound = null;
+        for(Song song : getBestSongs() ){
+            if(song.getId().equals(songId)){
+                songFound = song;
+            }
+        }
+        
+        // passing attributes
+        model.addAttribute("id", songId);
+        model.addAttribute("song", songFound);
 
         return "pageSongById";
     }
 
+    @GetMapping("/movies/{id}")
+    public String movieById(Model model, @PathVariable("id") Integer movieId){
+        
+        // find the movie by ID
+        Movie movieFound = null;
+        for(Movie movie : getBestMovies() ){
+            if(movie.getId().equals(movieId)){
+                movieFound = movie;
+            }
+        }
+        
+        // passing attributes
+        model.addAttribute("id", movieId);
+        model.addAttribute("movie", movieFound);
 
+        return "pageMovieById";
+    }
 
-    
-    
     // getters
     private ArrayList<Movie> getBestMovies(){
-        Movie movieUno = new Movie("1", "Harry Potter");
-        Movie movieDue = new Movie("2", "Il Signore degli Anelli");
-        Movie movieTre = new Movie("3", "Annabelle");
+        Movie movieUno = new Movie(1, "Harry Potter");
+        Movie movieDue = new Movie(2, "Il Signore degli Anelli");
+        Movie movieTre = new Movie(3, "Annabelle");
 
         ArrayList<Movie> listaDeiMiglioriFilm = new ArrayList<>();
         listaDeiMiglioriFilm.add(movieUno);
@@ -69,9 +86,9 @@ public class controller {
         return listaDeiMiglioriFilm;
     }
     private ArrayList<Song> getBestSongs(){
-        Song songUno = new Song("1", "Balorda Nostalgia");
-        Song songDue = new Song("2", "Volevo essere un duro");
-        Song songTre = new Song("3", "La Cura");
+        Song songUno = new Song(1, "Balorda Nostalgia");
+        Song songDue = new Song(2, "Volevo essere un duro");
+        Song songTre = new Song(3, "La Cura");
 
         ArrayList<Song> listaDelleMiglioriCanzoni = new ArrayList<>();
         listaDelleMiglioriCanzoni.add(songUno);
